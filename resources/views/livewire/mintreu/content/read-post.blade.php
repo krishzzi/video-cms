@@ -38,42 +38,42 @@
     </div>
     <div class="card-footer">
 
-       @auth()
+{{--       @auth()--}}
 
-            <div class="row col-12">
+{{--            <div class="row col-12">--}}
 
-                <div class="col-8">
-                    {{--            <form  wire:submit.prevent="save">--}}
-                    <div class="form-group">
-                        <textarea class="form-control" rows="3" cols="10" placeholder="Enter Comment" wire:model.defer="newComment"></textarea>
-                    </div>
-                    <button class="btn btn-sm btn-outline-danger" type="submit" wire:click="save">Submit</button>
-                    {{--            </form>--}}
-                </div>
+{{--                <div class="col-8">--}}
+{{--                    --}}{{--            <form  wire:submit.prevent="save">--}}
+{{--                    <div class="form-group">--}}
+{{--                        <textarea class="form-control" rows="3" cols="10" placeholder="Enter Comment" wire:model.defer="newComment"></textarea>--}}
+{{--                    </div>--}}
+{{--                    <button class="btn btn-sm btn-outline-danger" type="submit" wire:click="save">Submit</button>--}}
+{{--                    --}}{{--            </form>--}}
+{{--                </div>--}}
 
-                <div class="col-md-8" data-spy="scroll">
+{{--                <div class="col-md-8" data-spy="scroll">--}}
 
-                    @if(!empty($post->comments))
-                        @foreach($post->comments->sortDesc() as $comment)
-                            <div class="media">
-                                <p class="pull-right"><small>{{ $comment->created_at->diffForHumans() }}</small></p>
-                                <a class="media-left" href="#">
-                                <img src="{{  "http://lorempixel.com/40/40/people/1/" }}">
-                                </a>
-                                <div class="media-body">
+{{--                    @if(!empty($post->comments))--}}
+{{--                        @foreach($post->comments->sortDesc() as $comment)--}}
+{{--                            <div class="media">--}}
+{{--                                <p class="pull-right"><small>{{ $comment->created_at->diffForHumans() }}</small></p>--}}
+{{--                                <a class="media-left" href="#">--}}
+{{--                                <img src="{{  "http://lorempixel.com/40/40/people/1/" }}">--}}
+{{--                                </a>--}}
+{{--                                <div class="media-body">--}}
 
-                                    <h5 class="media-heading user_name">{{$comment->user->name}}</h5>
-                                    {{ $comment->body }}
+{{--                                    <h5 class="media-heading user_name">{{$comment->user->name}}</h5>--}}
+{{--                                    {{ $comment->body }}--}}
 
-                                    <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
-                                </div>
-                            </div>
-                        @endforeach
-                    @endif
+{{--                                    <p><small><a href="">Like</a> - <a href="">Share</a></small></p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        @endforeach--}}
+{{--                    @endif--}}
 
-                </div>
-            </div>
-        @endauth
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        @endauth--}}
 
 
     </div>
