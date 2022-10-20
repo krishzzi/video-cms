@@ -42,9 +42,9 @@ class AdvertResource extends Resource
 
                     Radio::make('position')
                         ->options([
-                            'top' => 'Top',
+                            'right' => 'Right',
                             'middle' => 'Middle',
-                            'bottom' => 'Bottom',
+                            'left' => 'Left',
 
                         ])
                         ->columnSpan(1)
@@ -74,7 +74,7 @@ class AdvertResource extends Resource
                     ->columns(3)
                     ->schema([
 
-                        TextInput::make('target')
+                        TextInput::make('target_url')
                             ->label(__('Target Url'))
                             ->columnSpan(3)
                             ->url()
@@ -84,6 +84,7 @@ class AdvertResource extends Resource
 
                         FileUpload::make('target_banner')
                             ->columnSpan(2)
+                            ->disk('public')
                             ->nullable()
                             ->imageResizeTargetWidth(1000)
                             ->imageResizeTargetHeight(900)

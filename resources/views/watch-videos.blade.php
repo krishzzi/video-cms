@@ -1,6 +1,6 @@
 <x-theme :setting="$setting">
     @section('layout_title')
-        {{ $setting->name}}|Story
+        {{ $setting->name ?? config('app.name')}}|Watch|{{$video->slug}}
     @endsection
 
     @section('content')
@@ -12,11 +12,30 @@
         <div class="main-content mx-auto">
 
             <div class="row col-12 mt-4">
-                <div class="bg-primary col-1">
-                    ss
-                </div>
+                @if(!empty($adverts))
+                    <div class="bg-transparent col-2 mt-4">
+                        @foreach( $adverts as $ads)
 
-                <div class="container col-10">
+                            @if($ads->position == 'left')
+                                @if($ads->type == 'block')
+                                    @if($ads->provider == 'private')
+
+                                        <a target="_blank" href="{{ $ads->target_url}}">
+                                            <img class="img-fluid" src="{{ asset('/storage/'.$ads->target_banner)}}">
+                                        </a>
+
+                                    @elseif($ads->provider == 'google')
+                                        {!! $ads->code !!}
+                                    @endif
+
+                                @endif
+                            @endif
+
+                        @endforeach
+                    </div>
+                @endif
+
+                <div class="container @if(!empty($adverts)) col-8 @else col-12 @endif">
 
                     <div class="card  bg-transparent col-12">
                         <div class="card-header bg-transparent ">
@@ -59,15 +78,61 @@
 
                         </div>
 
+                        @if(!empty($adverts))
+                            <div class="bg-transparent col-2 mt-4">
+                                @foreach( $adverts as $ads)
+
+                                    @if($ads->position == 'middle')
+                                        @if($ads->type == 'block')
+                                            @if($ads->provider == 'private')
+
+                                                <a target="_blank" href="{{ $ads->target_url}}">
+                                                    <img class="img-fluid w-100" src="{{ asset('/storage/'.$ads->target_banner)}}">
+                                                </a>
+
+                                            @elseif($ads->provider == 'google')
+                                                {!! $ads->code !!}
+                                            @endif
+
+                                        @endif
+                                    @endif
+
+                                @endforeach
+                            </div>
+                        @endif
+
+
+
                         <div class="card-body justify-content-center m-2">
                             {!! $video->desc !!}
                         </div>
                     </div>
 
                 </div>
-                <div class="bg-primary col-1">
-                    we
-                </div>
+
+
+                @if(!empty($adverts))
+                    <div class="bg-transparent col-2 mt-4">
+                        @foreach( $adverts as $ads)
+
+                            @if($ads->position == 'right')
+                                @if($ads->type == 'block')
+                                    @if($ads->provider == 'private')
+
+                                        <a target="_blank" href="{{ $ads->target_url}}">
+                                            <img class="img-fluid" src="{{ asset('/storage/'.$ads->target_banner)}}">
+                                        </a>
+
+                                    @elseif($ads->provider == 'google')
+                                        {!! $ads->code !!}
+                                    @endif
+
+                                @endif
+                            @endif
+
+                        @endforeach
+                    </div>
+                @endif
             </div>
 
         </div>

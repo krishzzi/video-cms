@@ -8,6 +8,7 @@
         "php": "^8.0.2",
         "ext-curl": "*",
         "filament/filament": "^2.15",
+        "filament/notifications": "^2.16",
         "guzzlehttp/guzzle": "^7.2",
         "jorenvanhocht/laravel-share": "^4.2",
         "laravel/framework": "^9.19",

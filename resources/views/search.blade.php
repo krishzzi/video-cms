@@ -12,19 +12,25 @@
         <div class="main-content mt-4">
             <h1 class="mt-4 text-center">-: Search :-</h1>
             <div class="card bg-transparent">
-                <form action="{{ route('search.via.form') }}" method="post" class="form-control">
-                    @csrf
-                    <div class="form-group ">
-                        <input name="tag" type="text" class="form-control"
-                               placeholder="type here to search...">
-                        {{--                                                <button type="submit"></button>--}}
-                        <button><i class="search-link ri-search-line"></i></button>
-                    </div>
-                </form>
+                <div class="card-body m-4 p-4">
+                    <form action="{{ route('search.via.form') }}" method="post" class="form-control border-0">
+                        @csrf
+
+
+                        <div class="input-group mb-3">
+                            <input type="text" name="tag" class="form-control" placeholder="type here to search..." aria-label="Search Keyword" aria-describedby="basic-addon2">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary text-white" type="submit"><i class="search-link ri-search-line"></i></button>
+                            </div>
+                        </div>
+
+
+                    </form>
+                </div>
             </div>
 
 
-            @livewire('mintreu.slider.content-slider',['type'=>'post','title' => 'Top Stories'])
+
 
 
            @if($found)
@@ -83,9 +89,9 @@
 
 
 
-
             @livewire('mintreu.slider.suggestion-slider',['type'=>'video','title' => 'Top Videos'])
 
+            @livewire('mintreu.slider.content-slider',['type'=>'post','title' => 'Top Stories'])
 
         </div>
 

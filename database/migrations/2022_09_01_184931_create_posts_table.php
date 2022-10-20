@@ -22,6 +22,8 @@ return new class extends Migration
             $table->integer('priority')->default(0);
             $table->boolean('status')->default(true);
 
+            $table->string('font_size_title')->default('h1');
+
             $table->integer('views')->nullable();
             $table->boolean('is_upcoming')->default(false);
             $table->boolean('in_slider')->default(false);

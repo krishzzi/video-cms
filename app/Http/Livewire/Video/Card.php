@@ -19,6 +19,7 @@ class Card extends Component
 
     public function placeLike()
     {
+        dd('sdfdsf');
         $this->video->rating++;
         $this->video->save();
     }

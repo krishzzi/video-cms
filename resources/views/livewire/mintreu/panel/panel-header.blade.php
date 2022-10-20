@@ -32,6 +32,7 @@
                                 </ul>
                             </div>
                         </div>
+
                         <div class="mobile-more-menu">
                             <a href="javascript:void(0);" class="more-toggle" id="dropdownMenuButton"
                                data-toggle="more-toggle" aria-haspopup="true" aria-expanded="false">
@@ -41,9 +42,7 @@
                                 <div class="navbar-right position-relative">
                                     <ul class="d-flex align-items-center justify-content-end list-inline m-0">
                                         <li>
-{{--                                            <a href="" class="search-toggle">--}}
-{{--                                                <i class="ri-search-line"></i>--}}
-{{--                                            </a>--}}
+
                                             <div class="search-box iq-search-bar">
                                                 <form action="{{ route('search.via.form') }}" method="post" class="searchbox">
                                                     @csrf
@@ -56,53 +55,7 @@
                                                 </form>
                                             </div>
                                         </li>
-                                        <li class="nav-item nav-icon">
-                                            <a href="#" class="search-toggle position-relative">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22"
-                                                     height="22" class="noti-svg">
-                                                    <path fill="none" d="M0 0h24v24H0z" />
-                                                    <path
-                                                        d="M18 10a6 6 0 1 0-12 0v8h12v-8zm2 8.667l.4.533a.5.5 0 0 1-.4.8H4a.5.5 0 0 1-.4-.8l.4-.533V10a8 8 0 1 1 16 0v8.667zM9.5 21h5a2.5 2.5 0 1 1-5 0z" />
-                                                </svg>
-                                                <span class="bg-danger dots"></span>
-                                            </a>
-                                            <div class="iq-sub-dropdown">
-                                                <div class="iq-card shadow-none m-0">
-                                                    <div class="iq-card-body">
-                                                        <a href="#" class="iq-sub-card">
-                                                            <div class="media align-items-center">
-                                                                <img src="images/notify/thumb-1.jpg" class="img-fluid mr-3"
-                                                                     alt="streamit" />
-                                                                <div class="media-body">
-                                                                    <h6 class="mb-0 ">Boop Bitty</h6>
-                                                                    <small class="font-size-12"> just now</small>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="iq-sub-card">
-                                                            <div class="media align-items-center">
-                                                                <img src="images/notify/thumb-2.jpg" class="img-fluid mr-3"
-                                                                     alt="streamit" />
-                                                                <div class="media-body">
-                                                                    <h6 class="mb-0 ">The Last Breath</h6>
-                                                                    <small class="font-size-12">15 minutes ago</small>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="#" class="iq-sub-card">
-                                                            <div class="media align-items-center">
-                                                                <img src="images/notify/thumb-3.jpg" class="img-fluid mr-3"
-                                                                     alt="streamit" />
-                                                                <div class="media-body">
-                                                                    <h6 class="mb-0 ">The Hero Camp</h6>
-                                                                    <small class="font-size-12">1 hour ago</small>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
+
                                         <li>
                                             <a href="#" class="iq-user-dropdown search-toggle d-flex align-items-center">
                                                 <img src="images/user/user.jpg" class="img-fluid avatar-40 rounded-circle"
@@ -180,68 +133,22 @@
                         <div class="navbar-right menu-right">
                             <ul class="d-flex align-items-center list-inline m-0">
                                 <li class="nav-item nav-icon">
-                                    <a href="#" class="search-toggle device-search">
-                                        <i class="ri-search-line"></i>
-                                    </a>
-                                    <div class="search-box iq-search-bar d-search">
+{{--                                    <a href="#" class="search-toggle device-search">--}}
+{{--                                        <i class="ri-search-line"></i>--}}
+{{--                                    </a>--}}
+                                    <div class=" search-toggle device-search">
                                         <form action="{{ route('search.via.form') }}" method="post" class="searchbox">
                                             @csrf
                                             <div class="form-group position-relative">
-                                                <input name="tag" type="text" class="text search-input font-size-12"
+                                                <input name="tag" type="text" height="15px" class="text search-input font-size-12 rounded"
                                                        placeholder="type here to search...">
-{{--                                                <button type="submit"></button>--}}
-                                                <i class="search-link ri-search-line"></i>
+                                                <button type="submit" class="bg-transparent border-0 text-white"><i class=" ri-search-line"></i></button>
+
                                             </div>
                                         </form>
                                     </div>
                                 </li>
-                                <li class="nav-item nav-icon">
-                                    <a href="#" class="search-toggle" data-toggle="search-toggle">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="22" height="22"
-                                             class="noti-svg">
-                                            <path fill="none" d="M0 0h24v24H0z" />
-                                            <path
-                                                d="M18 10a6 6 0 1 0-12 0v8h12v-8zm2 8.667l.4.533a.5.5 0 0 1-.4.8H4a.5.5 0 0 1-.4-.8l.4-.533V10a8 8 0 1 1 16 0v8.667zM9.5 21h5a2.5 2.5 0 1 1-5 0z" />
-                                        </svg>
-                                        <span class="bg-danger dots"></span>
-                                    </a>
-                                    <div class="iq-sub-dropdown">
-                                        <div class="iq-card shadow-none m-0">
-                                            <div class="iq-card-body">
-                                                <a href="#" class="iq-sub-card">
-                                                    <div class="media align-items-center">
-                                                        <img src="images/notify/thumb-1.jpg" class="img-fluid mr-3"
-                                                             alt="streamit" />
-                                                        <div class="media-body">
-                                                            <h6 class="mb-0 ">Boot Bitty</h6>
-                                                            <small class="font-size-12"> just now</small>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                                <a href="#" class="iq-sub-card">
-                                                    <div class="media align-items-center">
-                                                        <img src="images/notify/thumb-2.jpg" class="img-fluid mr-3"
-                                                             alt="streamit" />
-                                                        <div class="media-body">
-                                                            <h6 class="mb-0 ">The Last Breath</h6>
-                                                            <small class="font-size-12">15 minutes ago</small>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                                <a href="#" class="iq-sub-card">
-                                                    <div class="media align-items-center">
-                                                        <img src="images/notify/thumb-3.jpg" class="img-fluid mr-3"
-                                                             alt="streamit" />
-                                                        <div class="media-body">
-                                                            <h6 class="mb-0 ">The Hero Camp</h6>
-                                                            <small class="font-size-12">1 hour ago</small>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
+
                                 <li class="nav-item nav-icon">
                                     <a href="#" class="iq-user-dropdown search-toggle p-0 d-flex align-items-center"
                                        data-toggle="search-toggle">

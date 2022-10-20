@@ -51,14 +51,16 @@ class EditVideo extends EditRecord
                         ->afterStateUpdated(function (Closure $set, $state) {
                             $set('slug',Str::slug($state));
                         })
-                        ->afterStateHydrated(function (Closure $set, $state) {
-                            $set('slug',Str::slug($state));
-                        })
+
                         ->columnSpan(3)
                         ->required(),
 
                     TextInput::make('slug')
-                        ->unique()
+                        ->unique(ignoreRecord: true)
+                        ->afterStateHydrated(function (Closure $get,TextInput $component) {
+
+                            $component->state(Str::slug($get('title') ?? ''));
+                        })
                         ->label(__('Publishing Url will be'))
                         ->prefix(config('app.url').'/watch-video/')
                         ->minLength(3)

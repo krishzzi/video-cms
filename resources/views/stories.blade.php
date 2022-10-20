@@ -1,6 +1,6 @@
 <x-theme :setting="$setting">
     @section('layout_title')
-        {{ $setting->name}}|Videos
+        {{ $setting->name}}|Stories
     @endsection
 
     @section('content')

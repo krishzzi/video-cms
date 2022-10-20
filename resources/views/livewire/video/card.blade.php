@@ -21,12 +21,9 @@
             <div class="block-social-info">
                 <ul class="list-inline p-0 m-0 music-play-lists">
 
-                    <li wire:click="placeLike()"><span>
-{{--                            <i class="ri-volume-mute-fill"></i>--}}
-                            <i class="fas fa-share-alt"></i>
-                        </span></li>
-                    <li><span><i class="ri-heart-fill"></i></span></li>
-                    <li><span><i class="ri-add-line"></i></span></li>
+                    <li ><span><i class="fas fa-share-alt"></i></span></li>
+                    <li ><span><i wire:click="likeAction({{ $video->id }})" class="ri-heart-fill"></i></span></li>
+                    <li><span><i wire:click="inlistAction({{ $video->id }})" class="ri-add-line"></i></span></li>
                 </ul>
             </div>
         </div>

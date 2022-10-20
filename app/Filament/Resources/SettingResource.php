@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\SettingResource\Pages;
 use App\Filament\Resources\SettingResource\RelationManagers;
 use App\Models\Setting;
+use Closure;
 use Faker\Provider\Text;
 use Filament\Forms;
 use Filament\Forms\Components\Fieldset;
@@ -13,12 +14,15 @@ use Filament\Forms\Components\Radio;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
+use Filament\Notifications\Notification;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Support\Facades\Artisan;
 
 class SettingResource extends Resource
 {
@@ -66,6 +70,69 @@ class SettingResource extends Resource
 
                     ])
                     ->columns(2),
+
+
+
+                Fieldset::make(__('TuneUp Application Manually'))->schema([
+
+                    Toggle::make('optimization')
+                        ->label(__('App Optimize'))
+                        ->reactive()
+                        ->afterStateUpdated(function ($state) {
+                            if($state)
+                            {
+
+                                Artisan::call('optimize:clear');
+                                Notification::make()
+                                    ->title('Optimization Done Successfully')
+                                    ->success()
+                                    ->send();
+                            }
+
+                        }),
+
+
+
+                    Toggle::make('img_optimize')->label(__('Storage Optimize'))
+                        ->reactive()
+                        ->afterStateUpdated(function ($state) {
+                            if($state)
+                            {
+                                rmdir(public_path('storage'));
+                                Artisan::call('storage:link');
+                                if(dir(public_path('storage')))
+                                {
+                                    Notification::make()
+                                        ->title('Image Path Refresh Successfully')
+                                        ->success()
+                                        ->send();
+                                }
+                            }
+
+                        }),
+
+
+
+                    Toggle::make('reset')->label(__('Reset Everything'))
+                        ->reactive()
+                        ->afterStateUpdated(function ($state) {
+                            if($state)
+                            {
+
+                                Artisan::call('app:install');
+                                Notification::make()
+                                    ->title('Application Reset Successfully')
+                                    ->success()
+                                    ->send();
+                            }
+
+                        }),
+
+
+                ])->columns(3),
+
+
+
 
 
                 Fieldset::make('Seo Info')->schema([

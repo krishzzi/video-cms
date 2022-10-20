@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('provider')->default('private');
             $table->string('type')->nullable();
             $table->string('position');
+            $table->integer('priority')->default(0);
             $table->dateTime('expire_at');
             $table->string('target_url')->nullable();
             $table->string('target_banner')->nullable();

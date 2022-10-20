@@ -2,6 +2,10 @@
 
 
 <x-theme :setting="$setting">
+
+    @section('layout_title') {{config('app.name')}}|Home @endsection
+
+
     @section('content')
 
         {{--    @include('blocks.header')--}}
@@ -19,6 +23,7 @@
 
         </div>
 
+            @livewire('mintreu.panel.panel-footer')
 {{--        @include('blocks.footer')--}}
     @endsection
 </x-theme>

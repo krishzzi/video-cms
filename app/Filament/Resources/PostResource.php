@@ -41,17 +41,31 @@ class PostResource extends Resource
                             ->afterStateUpdated(function (Closure $set, $state) {
                                 $set('slug',Str::slug($state));
                             })
-                            ->afterStateHydrated(function (Closure $set, $state) {
-                                $set('slug',Str::slug($state));
-                            })
                             ->columnSpan(3)
                             ->required(),
 
+
+                        Forms\Components\Select::make('font_size_title')->options([
+                            'h1' => 'Heading 1',
+                            'h2' => 'Heading 2',
+                            'h3' => 'Heading 3',
+                            'h4' => 'Heading 4',
+                            'h5' => 'Heading 5',
+                            'h6' => 'Heading 6',
+                            'display-1' => 'Display 1',
+                            'display-2' => 'Display 2',
+                            'display-3' => 'Display 3',
+                            'display-4' => 'Display 4',
+                        ])->columnSpan(1),
+
                         TextInput::make('slug')
-                            ->unique()
+                            ->unique(ignoreRecord: true)
                             ->label(__('Publishing Url will be'))
+                            ->afterStateHydrated(function (Closure $get,TextInput $component) {
+                                $component->state(Str::slug($get('title') ?? ''));
+                            })
                             ->prefix(config('app.url').'/read-story/')
-                            ->minLength(3)
+                            ->minLength(2)
                             ->maxLength(255)
                             ->required()->columnSpan(3),
 

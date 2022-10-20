@@ -22,31 +22,33 @@ class VideoCard extends Component
     public function likeAction(Video $video)
     {
 
-
-
+        $this->video = $video;
         $newActivity = Activity::create([
             'like' => true,
             'ip' => request()->ip(),
-            'user' => auth()->user()->id ?? null
+            'user_id' => auth()->user()->id ?? null
         ]);
-        $video->activity()->attach($newActivity);
-        $video->save();
-        return $this->video = $video;
+
+
+
+        $this->video->activity()->attach($newActivity);
+        $this->video->save();
+
+
 
     }
 
 
     public function inlistAction(Video $video)
     {
-
+        $this->video = $video;
         $newActivity = Activity::create([
             'inlist' => true,
             'ip' => request()->ip(),
-            'user' => auth()->user()->id ?? null
+            'user_id' => auth()->user()->id ?? null
         ]);
-        $video->activity()->attach($newActivity);
-        $video->save();
-        return $this->video = $video;
+        $this->video->activity()->attach($newActivity);
+        $this->video->save();
 
     }
 

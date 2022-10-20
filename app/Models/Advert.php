@@ -14,6 +14,7 @@ class Advert extends Model
         'provider',
         'type',
         'position',
+        'priority',
         'expire_at',
         'target_url',
         'target_banner',

@@ -1,4 +1,4 @@
-<div class="card  bg-transparent col-12">
+<div class="card  bg-transparent ">
     <div class="card-header bg-transparent ">
         <img src="{{ empty($post->display ) ? 'https://picsum.photos/1500/400' : asset('storage/'.$post->display) }}" class="img-fluid m-2 " alt="{{$post->title}}">
         <h1 class="display-3 text-white">{{$post->title}}</h1>
