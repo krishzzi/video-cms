@@ -6,6 +6,7 @@ use App\Mail\ContactMail;
 use App\Models\Advert;
 use App\Models\Category;
 use App\Models\ContactForm;
+use App\Models\Page;
 use App\Models\Post;
 use App\Models\Setting;
 use App\Models\Tag;
@@ -190,6 +191,24 @@ class WebController extends Controller
     }
 
 
+
+
+
+    public function getPolicy(Page $page)
+    {
+        if($page->redirect && !empty($page->redirect_url))
+        {
+            return redirect()->to($page->redirect_url);
+        }
+
+        $page->load('tags');
+        $policy = $page;
+        $setting = $this->setting;
+        dd($setting);
+        return view('policy')->with(compact('setting','policy'));
+
+
+    }
 
 
 

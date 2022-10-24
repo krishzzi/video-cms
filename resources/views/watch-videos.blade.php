@@ -137,7 +137,7 @@
 
         </div>
 
-        {{--        @include('blocks.footer')--}}
+            <livewire:mintreu.panel.panel-footer :setting="$setting" />
     @endsection
 </x-theme>
 

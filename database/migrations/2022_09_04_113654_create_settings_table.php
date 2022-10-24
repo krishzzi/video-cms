@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('logo')->nullable();
             $table->boolean('age_restrict')->default(false);
             $table->json('meta')->nullable();
-
+            $table->json('social')->nullable();
             $table->boolean('default')->default(false);
 
 

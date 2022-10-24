@@ -23,8 +23,7 @@
 
         </div>
 
-            @livewire('mintreu.panel.panel-footer')
-{{--        @include('blocks.footer')--}}
+            <livewire:mintreu.panel.panel-footer :setting="$setting" />
     @endsection
 </x-theme>
 

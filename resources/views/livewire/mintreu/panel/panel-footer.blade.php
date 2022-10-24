@@ -4,40 +4,39 @@
             <div class="row">
                 <div class="col-lg-3 col-md-4">
                     <ul class="f-link list-unstyled mb-0">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="{{ route('gallery.video') }}">Videos</a></li>
-                        <li><a href="{{ route('gallery.post') }}">Tv Shows</a></li>
-                        <li><a href="#">Coporate Information</a></li>
+                        @if(!is_null($aboutUs))
+                            <li><a href="{{ route('read.policy',[$aboutUs->slug]) }}">{{$aboutUs->title}}</a></li>
+                        @endif
+                        @foreach($policies->where('section',1)->take(5) as $policy)
+                                <li><a href="{{ route('read.policy',[$policy->slug]) }}">{{ $policy->title }}</a></li>
+                        @endforeach
+
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <ul class="f-link list-unstyled mb-0">
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
-                        <li><a href="#">Help</a></li>
+                        @foreach($policies->where('section',1)->take(5) as $policy)
+                            <li><a href="{{ route('read.policy',[$policy->slug]) }}">{{ $policy->title }}</a></li>
+                        @endforeach
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-4">
                     <ul class="f-link list-unstyled mb-0">
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="{{route('contact.us.form')}}">Cotact Us</a></li>
-                        <li><a href="#">Legal Notice</a></li>
+                        @foreach($policies->where('section',1)->take(4) as $policy)
+                            <li><a href="{{ route('read.policy',[$policy]) }}">{{ $policy->title }}</a></li>
+                        @endforeach
+                        <li><a href="{{route('contact.us.form')}}">Contact Us</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-12 r-mt-15">
                     <div class="d-flex">
-                        <a href="#" class="s-icon">
-                            <i class="ri-facebook-fill"></i>
-                        </a>
-                        <a href="#" class="s-icon">
-                            <i class="ri-skype-fill"></i>
-                        </a>
-                        <a href="#" class="s-icon">
-                            <i class="ri-linkedin-fill"></i>
-                        </a>
-                        <a href="#" class="s-icon">
-                            <i class="ri-whatsapp-fill"></i>
-                        </a>
+                        @if(!is_null($setting->social))
+                            @foreach( $setting->social as $social)
+                                <a href="{{$social['link']}}" class="s-icon">
+                                    <i class="ri-{{$social['name']}}-fill"></i>
+                                </a>
+                            @endforeach
+                        @endif
                     </div>
                 </div>
             </div>

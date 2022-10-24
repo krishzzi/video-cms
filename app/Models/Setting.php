@@ -19,6 +19,7 @@ class Setting extends Model
         'age_restrict' => 'bool',
         'default' => 'bool',
         'meta' => 'array',
+        'social' => 'array'
     ];
 
 

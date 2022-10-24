@@ -13,7 +13,12 @@ class Page extends Model
         'title',
         'priority',
         'desc',
-        'slug'
+        'slug',
+        'section',
+
+    ];
+    protected $casts = [
+        'redirect' => 'bool'
     ];
 
 

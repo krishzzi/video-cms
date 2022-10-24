@@ -145,6 +145,17 @@ class SettingResource extends Resource
                         Textarea::make('value'),
                     ])->columns(2),
 
+                    Repeater::make('social')->label(__('Social Information'))->schema([
+                        Forms\Components\Select::make('name')->options([
+                            'facebook' => 'Facebook',
+                            'youtube' => 'Youtube',
+                            'skype' => 'Skype',
+                            'linkedin' => 'Linkedin',
+                            'whatsapp' => 'Whatsapp'
+                        ]),
+                        TextInput::make('link')->url()->nullable(),
+                    ])->columns(2),
+
                 ])->columns(1)
 
 

@@ -19,6 +19,10 @@ return new class extends Migration
             $table->string('slug');
             $table->integer('priority')->default(0);
             $table->text('desc');
+            $table->boolean('status')->default(true);
+            $table->string('redirect_url')->nullable();
+            $table->boolean('redirect')->default(false);
+            $table->integer('section')->default(0);
             $table->timestamps();
         });
     }

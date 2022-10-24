@@ -22,6 +22,12 @@ class SettingSeeder extends Seeder
         $setting = Setting::create([
             'theme' => 'stream',
             'default' => true,
+//            'social' => json_encode([
+//                ['name' => 'facebook', 'link' => ''],
+//                ['name' => 'youtube', 'link' => ''],
+//                ['name' => 'skype', 'link' => ''],
+//                ['name' => 'whatsapp', 'link' => '']
+//            ]),
         ]);
 
 

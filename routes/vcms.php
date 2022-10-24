@@ -32,3 +32,5 @@ Route::post('search/k/',[\App\Http\Controllers\WebController::class,'searchText'
 
 Route::get('contact-us',[\App\Http\Controllers\WebController::class,'contactUsForm'])->name('contact.us.form');
 Route::post('contact-us',[\App\Http\Controllers\WebController::class,'contactUs'])->name('contact.us');
+
+Route::get('policies/{page:slug}',[\App\Http\Controllers\WebController::class,'getPolicy'])->name('read.policy');
