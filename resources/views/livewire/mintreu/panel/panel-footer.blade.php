@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-lg-3 col-md-12 r-mt-15">
                     <div class="d-flex">
-                        @if(!is_null($setting->social))
+                        @if(!is_null($setting) && !is_null($setting->social))
                             @foreach( $setting->social as $social)
                                 <a href="{{$social['link']}}" class="s-icon">
                                     <i class="ri-{{$social['name']}}-fill"></i>

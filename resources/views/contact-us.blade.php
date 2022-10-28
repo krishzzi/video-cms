@@ -26,15 +26,27 @@
 
                     <div class="card-body">
 
+                        @if(!empty($success))
+                            <div class="row bg-success text-white mx-auto flex p-2 m-2 rounded">
+                               <div class="col-10 mt-2">
+                                   <p class="float-left">{{ $success }}</p>
+                               </div>
+                                <div class="col-2">
+                                    <a class="btn float-right" href="{{ route('contact.us.form') }}">X</a>
+                                </div>
+                            </div>
+                        @endif
 
-                        <form  method="post" action="{{route('contact.us')}}">
+
+
+                        <form  method="post" action="{{route('contact.us')}}" enctype="multipart/form-data">
                                 {{ csrf_field() }}
 
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <strong>Name:</strong>
-                                            <input type="text" name="name" class="form-control" placeholder="Name" value="{{ old('name') }}">
+                                            <input type="text" name="name" class="form-control" placeholder="Enter Your Full Name" value="{{ old('name') }}" maxlength="155" required>
                                             @if ($errors->has('name'))
                                                 <span class="text-danger">{{ $errors->first('name') }}</span>
                                             @endif
@@ -43,7 +55,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <strong>Email:</strong>
-                                            <input type="text" name="email" class="form-control" placeholder="Email" value="{{ old('email') }}">
+                                            <input type="text" name="email" class="form-control" placeholder="Enter Your Email" value="{{ old('email') }}" maxlength="155">
                                             @if ($errors->has('email'))
                                                 <span class="text-danger">{{ $errors->first('email') }}</span>
                                             @endif
@@ -54,7 +66,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <strong>Phone:</strong>
-                                            <input type="text" name="phone" class="form-control" placeholder="Phone" value="{{ old('phone') }}">
+                                            <input type="number" name="phone" class="form-control" placeholder="Enter Your Contact Number" value="{{ old('phone') }}" maxlength="10">
                                             @if ($errors->has('phone'))
                                                 <span class="text-danger">{{ $errors->first('phone') }}</span>
                                             @endif
@@ -63,7 +75,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <strong>Subject:</strong>
-                                            <input type="text" name="subject" class="form-control" placeholder="Subject" value="{{ old('subject') }}">
+                                            <input type="text" name="subject" class="form-control" placeholder="Enter Subject" value="{{ old('subject') }}" maxlength="155">
                                             @if ($errors->has('subject'))
                                                 <span class="text-danger">{{ $errors->first('subject') }}</span>
                                             @endif
@@ -74,7 +86,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <strong>Message:</strong>
-                                            <textarea name="message" rows="3" class="form-control">{{ old('message') }}</textarea>
+                                            <textarea name="message" rows="3" class="form-control" maxlength="555" placeholder="Enter Message">{{ old('message') }}</textarea>
                                             @if ($errors->has('message'))
                                                 <span class="text-danger">{{ $errors->first('message') }}</span>
                                             @endif

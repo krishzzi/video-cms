@@ -15,7 +15,7 @@
                                 <span class="navbar-menu-icon navbar-menu-icon--bottom"></span>
                             </div>
                         </a>
-                        <a class="navbar-brand" href="{{ route('home') }}"> <img class="img-fluid logo" src="{{asset($setting->logo)}}"
+                        <a class="navbar-brand" href="{{ route('home') }}"> <img class="img-fluid logo" src="@if(!empty($setting->logo)){{asset($setting->logo)}} @else # @endif"
                                                                                  alt="{{$setting->name ?? config('app.name')}}" /> </a>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <div class="menu-main-menu-container">

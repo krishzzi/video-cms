@@ -166,25 +166,31 @@ class WebController extends Controller
     {
 
         $setting = $this->setting;
+        $success = '';
 
-        return view('contact-us')->with(compact('setting'));
+        return view('contact-us')->with(compact('setting','success'));
 
     }
 
 
     public function contactUs(Request $request)
     {
-        $request->validate([
+        $validate = $request->validate([
             'name' => 'required',
             'email' => 'required|email',
-            'phone' => 'required|digits:10|numeric',
+            'phone' => 'required|max:10',
             'subject' => 'required',
             'message' => 'required'
         ]);
 
-        $form = ContactForm::create($request->all());
 
-        Mail::to($this->setting->contact_us ?? config('mail.from.address'))->send(new ContactMail($form));
+
+
+        $form = ContactForm::create($validate);
+
+//        dd($form);
+//
+//        Mail::to($this->setting->contact_us ?? config('mail.from.address'))->send(new ContactMail($form));
 
         return redirect()->back()
             ->with(['success' => 'Thank you for contact us. we will contact you shortly.']);

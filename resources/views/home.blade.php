@@ -8,8 +8,6 @@
 
     @section('content')
 
-        {{--    @include('blocks.header')--}}
-
         <livewire:mintreu.panel.panel-header :setting="$setting" />
         <!-- MainContent -->
         <div class="main-content m-4">

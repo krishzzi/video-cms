@@ -20,9 +20,7 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
     require $maintenance;
 }
 
-if (file_exists($installer = __DIR__.'/installer.php')) {
-    require $installer;
-}
+
 
 /*
 |--------------------------------------------------------------------------

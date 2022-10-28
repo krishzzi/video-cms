@@ -2,7 +2,7 @@
     <x-auth-card>
         <x-slot name="logo">
             <a href="/">
-                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                <img height="150" width="200" src="@if(!empty($setting->logo)){{asset($setting->logo)}} @endif" alt="{{$setting->name ?? config('app.name')}}">
             </a>
         </x-slot>
 
@@ -50,9 +50,12 @@
                     {{ __('Already registered?') }}
                 </a>
 
-                <x-primary-button class="ml-4">
-                    {{ __('Register') }}
-                </x-primary-button>
+
+                <button class="bg-green-700 text-white ml-4 p-2 rounded-lg"> {{ __('Register') }}</button>
+
+{{--                <x-primary-button class="ml-4 bg-green-400">--}}
+{{--                    {{ __('Register') }}--}}
+{{--                </x-primary-button>--}}
             </div>
         </form>
     </x-auth-card>

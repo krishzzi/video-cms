@@ -7,7 +7,7 @@
     <x-slot name='layout_description'></x-slot>
 
     <x-slot name="layout_favicon">
-        {{asset('storage/'.$setting->logo)}}
+        @if(!empty($setting->logo)){{asset('storage/'.$setting->logo)}}@endif
     </x-slot>
 
     <x-slot name="og_tag_slot">
@@ -20,9 +20,9 @@
     </x-slot>
 
 
-    <x-slot name="header">{{ $setting->header }}</x-slot>
+    <x-slot name="header">@if(!empty($setting->header)){{ $setting->header }}@endif</x-slot>
 
-    <x-slot name="footer">{{$setting->footer}}</x-slot>
+    <x-slot name="footer">@if(!empty($setting->footer)){{$setting->footer}}@endif</x-slot>
 
 
 
@@ -66,8 +66,6 @@
     </x-slot>
 
     <x-slot name="slot">
-
-
     @yield('content')
     </x-slot>
 

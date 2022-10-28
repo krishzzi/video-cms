@@ -2,7 +2,14 @@
 
 namespace App\Filament\Widgets;
 
+use App\Models\Activity;
+use App\Models\Advert;
 use App\Models\Category;
+use App\Models\ContactForm;
+use App\Models\Post;
+use App\Models\Tag;
+use App\Models\User;
+use App\Models\Video;
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Card;
 
@@ -12,23 +19,44 @@ class StatsOverview extends BaseWidget
     {
         return [
             Card::make('Categories', $this->getCategoryCount())
-                ->description('32k increase')
+                //      ->description('32k increase')
+             ->descriptionIcon('heroicon-s-trending-up')
+                ->color('success'),
+
+            Card::make('Tags', $this->getTagCount())
+                //      ->description('32k increase')
                 ->descriptionIcon('heroicon-s-trending-up')
                 ->color('success'),
-            Card::make('Bounce rate', '21%')
-                ->description('7% increase')
-                ->descriptionIcon('heroicon-s-trending-down')
-                ->color('danger'),
-            Card::make('Average time on page', '3:12')
-                ->description('3% increase')
+
+            Card::make('Posts', $this->getPostsCount())
+                //         ->description('32k increase')
+                ->descriptionIcon('heroicon-s-trending-up')
+                ->color('success'),
+            Card::make('Videos', $this->getVideosCount())
+//                ->description('32k increase')
                 ->descriptionIcon('heroicon-s-trending-up')
                 ->color('success'),
 
 
-            Card::make('Unique views', '192.1k')
-                ->description('32k increase')
+            Card::make('Users', $this->getUsersCount())
+//                ->description('32k increase')
                 ->descriptionIcon('heroicon-s-trending-up')
-                ->chart([7, 2, 10, 3, 15, 4, 17])
+                ->color('success'),
+
+
+            Card::make('Mail', $this->getContactFormCount())
+//                ->description('32k increase')
+                ->descriptionIcon('heroicon-s-trending-up')
+                ->color('success'),
+
+            Card::make('Advert', $this->getAdvertCount())
+//                ->description('32k increase')
+                ->descriptionIcon('heroicon-s-trending-up')
+                ->color('success'),
+
+            Card::make('Activity', $this->getActivityCount())
+//                ->description('32k increase')
+                ->descriptionIcon('heroicon-s-trending-up')
                 ->color('success'),
 
 
@@ -39,6 +67,41 @@ class StatsOverview extends BaseWidget
     protected function getCategoryCount()
     {
         return Category::all()->count();
+    }
+
+    private function getPostsCount()
+    {
+        return Post::all()->count();
+    }
+
+    private function getVideosCount()
+    {
+        return Video::all()->count();
+    }
+
+    private function getUsersCount()
+    {
+        return User::all()->count() - 1;
+    }
+
+    private function getContactFormCount()
+    {
+        return ContactForm::all()->count();
+    }
+
+    private function getAdvertCount()
+    {
+        return Advert::all()->count();
+    }
+
+    private function getTagCount()
+    {
+        return Tag::all()->count();
+    }
+
+    private function getActivityCount()
+    {
+        return Activity::all()->count();
     }
 
 }
