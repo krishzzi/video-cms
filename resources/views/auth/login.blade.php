@@ -3,7 +3,7 @@
         <x-slot name="logo">
             <a href="/" class="mx-auto text-center">
 {{--                <x-application-logo class="w-20 h-20 fill-current text-gray-500" />--}}
-                <img height="150" width="200" src="@if(!empty($setting->logo)){{asset($setting->logo)}} @endif" alt="{{$setting->name ?? config('app.name')}}">
+                <img height="150" width="200" src="@if(!empty($setting->logo)){{asset('storage/'.$setting->logo)}} @endif" alt="{{$setting->name ?? config('app.name')}}">
             </a>
         </x-slot>
 

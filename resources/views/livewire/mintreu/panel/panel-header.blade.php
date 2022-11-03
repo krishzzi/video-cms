@@ -1,6 +1,6 @@
 
 <!-- Header -->
-<header id="main-header">
+<header id="main-header" class="mb-4 p-3">
     <div class="main-header">
         <div class="container-fluid">
             <div class="row">
@@ -15,7 +15,7 @@
                                 <span class="navbar-menu-icon navbar-menu-icon--bottom"></span>
                             </div>
                         </a>
-                        <a class="navbar-brand" href="{{ route('home') }}"> <img class="img-fluid logo" src="@if(!empty($setting->logo)){{asset($setting->logo)}} @else # @endif"
+                        <a class="navbar-brand" href="{{ route('home') }}"> <img height="40px" width="80px" class="img-fluid logo" src="@if(!empty($setting->logo)){{asset('storage/'.$setting->logo)}} @else # @endif"
                                                                                  alt="{{$setting->name ?? config('app.name')}}" /> </a>
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <div class="menu-main-menu-container">
@@ -47,7 +47,7 @@
                                                 <form action="{{ route('search.via.form') }}" method="post" class="searchbox">
                                                     @csrf
                                                     <div class="form-group position-relative">
-                                                        <input name="tag" type="text" class="text search-input font-size-12"
+                                                        <input name="tag" type="text" class="text search-input font-size-12" height="15px"
                                                                placeholder="type here to search...">
                                                         {{--                                                <button type="submit"></button>--}}
                                                         <i class="search-link ri-search-line"></i>
@@ -58,7 +58,7 @@
 
                                         <li>
                                             <a href="#" class="iq-user-dropdown search-toggle d-flex align-items-center">
-                                                <img src="images/user/user.jpg" class="img-fluid avatar-40 rounded-circle"
+                                                <img src="@auth{{ 'storage/'.auth()->user()->avatar }}@endauth" class="img-fluid avatar-40 rounded-circle"
                                                      alt="user">
                                             </a>
                                             <div class="iq-sub-dropdown iq-user-dropdown">
@@ -66,38 +66,9 @@
                                                     @if (Route::has('login'))
                                                     <div class="iq-card-body p-0 pl-3 pr-3">
                                                         @auth
-                                                            <a href="{{ url('/home') }}" class="iq-sub-card setting-dropdown">Home</a>
+                                                            <a href="{{ url('/dashboard') }}" class="iq-sub-card setting-dropdown">Dashboard</a>
 
-                                                            <a href="manage-profile.html" class="iq-sub-card setting-dropdown">
-                                                                <div class="media align-items-center">
-                                                                    <div class="right-icon">
-                                                                        <i class="ri-file-user-line text-primary"></i>
-                                                                    </div>
-                                                                    <div class="media-body ml-3">
-                                                                        <h6 class="mb-0 ">Manage Profile</h6>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                            <a href="setting.html" class="iq-sub-card setting-dropdown">
-                                                                <div class="media align-items-center">
-                                                                    <div class="right-icon">
-                                                                        <i class="ri-settings-4-line text-primary"></i>
-                                                                    </div>
-                                                                    <div class="media-body ml-3">
-                                                                        <h6 class="mb-0 ">Settings</h6>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
-                                                            <a href="pricing-plan.html" class="iq-sub-card setting-dropdown">
-                                                                <div class="media align-items-center">
-                                                                    <div class="right-icon">
-                                                                        <i class="ri-settings-4-line text-primary"></i>
-                                                                    </div>
-                                                                    <div class="media-body ml-3">
-                                                                        <h6 class="mb-0 ">Pricing Plan</h6>
-                                                                    </div>
-                                                                </div>
-                                                            </a>
+
 
                                                             <a href="{{ route('logout') }}" class="iq-sub-card setting-dropdown">
                                                                 <div class="media align-items-center">
@@ -152,7 +123,7 @@
                                 <li class="nav-item nav-icon">
                                     <a href="#" class="iq-user-dropdown search-toggle p-0 d-flex align-items-center"
                                        data-toggle="search-toggle">
-                                        <img src="images/user/user.jpg" class="img-fluid avatar-40 rounded-circle" alt="user">
+                                        <img src="@auth{{ 'storage/'.auth()->user()->avatar }}@endauth" class="img-fluid avatar-40 rounded-circle" alt="user">
                                     </a>
 
 
@@ -162,38 +133,9 @@
                                             @if (Route::has('login'))
                                                 <div class="iq-card-body p-0 pl-3 pr-3">
                                                     @auth
-                                                        <a href="{{ url('/home') }}" class="iq-sub-card setting-dropdown">Home</a>
+                                                        <a href="{{ url('/dashboard') }}" class="iq-sub-card setting-dropdown">Dashboard</a>
 
-                                                        <a href="manage-profile.html" class="iq-sub-card setting-dropdown">
-                                                            <div class="media align-items-center">
-                                                                <div class="right-icon">
-                                                                    <i class="ri-file-user-line text-primary"></i>
-                                                                </div>
-                                                                <div class="media-body ml-3">
-                                                                    <h6 class="mb-0 ">Manage Profile</h6>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="setting.html" class="iq-sub-card setting-dropdown">
-                                                            <div class="media align-items-center">
-                                                                <div class="right-icon">
-                                                                    <i class="ri-settings-4-line text-primary"></i>
-                                                                </div>
-                                                                <div class="media-body ml-3">
-                                                                    <h6 class="mb-0 ">Settings</h6>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="pricing-plan.html" class="iq-sub-card setting-dropdown">
-                                                            <div class="media align-items-center">
-                                                                <div class="right-icon">
-                                                                    <i class="ri-settings-4-line text-primary"></i>
-                                                                </div>
-                                                                <div class="media-body ml-3">
-                                                                    <h6 class="mb-0 ">Pricing Plan</h6>
-                                                                </div>
-                                                            </div>
-                                                        </a>
+
 
                                                         <a href="{{ route('logout') }}" class="iq-sub-card setting-dropdown">
                                                             <div class="media align-items-center">

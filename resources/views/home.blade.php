@@ -10,7 +10,7 @@
 
         <livewire:mintreu.panel.panel-header :setting="$setting" />
         <!-- MainContent -->
-        <div class="main-content m-4">
+        <div class="main-content mt-8 p-5">
 
 
 

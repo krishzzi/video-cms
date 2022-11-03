@@ -15,9 +15,9 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        Post::factory(50)->create()->each(function ($post){
+        Post::factory(2)->create()->each(function ($post){
             $post->category()->attach(Category::where('status',true)->get()->random()->pluck('id'));
-            
+
             $post->save();
         });
     }

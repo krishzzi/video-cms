@@ -29,6 +29,7 @@ Route::get('/', [\App\Http\Controllers\WebController::class,'index'])->name('hom
 
 
 Route::get('/dashboard', [\App\Http\Controllers\DashboardController::class,'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/my-watchlist', [\App\Http\Controllers\DashboardController::class,'myWatchlist'])->middleware(['auth'])->name('mywatchlist');
 
 
 
