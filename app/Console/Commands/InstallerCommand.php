@@ -169,6 +169,9 @@ class InstallerCommand extends Command
                 //                    $this->info($result);
                 //                }
                 // waiting for 2 seconds
+                
+                $this->storageLink();
+                
                 $this->warn(self::INSTALLER.'Please wait...');
                 sleep(2);
                 $this->warn(self::INSTALLER.'Finalizing Installation...');
@@ -181,4 +184,24 @@ class InstallerCommand extends Command
             }
         }
     }
+    
+    
+     private function storageLink()
+    {
+        if ($this->confirm("iotron: Do You Wish To Symlink Storage Directory?", true)) {
+            // waiting for 2 seconds
+            $this->warn('iotron: Please wait...');
+            sleep(2);
+            // running `php artisan storage:link`
+            $this->warn('iotron: Linking Storage directory...');
+            if (is_dir(public_path('storage'))) {
+                rmdir(public_path('storage'));
+            }
+
+            $result = $this->call('storage:link');
+            $this->info((string) $result);
+        }
+    }
+    
+    
 }
