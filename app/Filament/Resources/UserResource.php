@@ -21,7 +21,7 @@ class UserResource extends Resource
 {
     protected static ?string $model = User::class;
     protected static ?string $navigationIcon = 'heroicon-o-collection';
-    protected static ?string $navigationGroup = 'User';
+    protected static ?string $navigationGroup = 'Manage';
     protected static ?string $slug = 'User';
 
     public static function form(Form $form): Form
@@ -47,10 +47,10 @@ class UserResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name'),
-                TextColumn::make('email'),
+                TextColumn::make('email')->sortable(),
                 BooleanColumn::make('is_admin'),
-                BooleanColumn::make('status'),
-                TextColumn::make('created_at')->dateTime(),
+                BooleanColumn::make('status')->sortable(),
+                TextColumn::make('created_at')->dateTime()->sortable(),
             ])
             ->filters([
                 //

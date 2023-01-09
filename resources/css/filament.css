@@ -1,0 +1,22 @@
+@import '../../vendor/filament/filament/resources/css/app.css';
+
+
+.filament-sidebar-item-active>a {
+    @apply bg-gradient-to-t from-red-800 to-red-400
+}
+
+.filament-button {
+    @apply bg-gradient-to-t from-red-800 to-red-400
+}
+
+.filament-tables-row:nth-child(odd) {
+    @apply bg-gray-100 dark:bg-slate-900
+}
+
+ .filament-main {
+    @apply dark:bg-gray-900
+}
+
+/* .filament-tables-container {
+    @apply dark:bg-gray-900 !important
+} */

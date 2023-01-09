@@ -15,10 +15,26 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        Post::factory(2)->create()->each(function ($post){
+        Post::factory(100)->create()->each(function ($post){
             $post->category()->attach(Category::where('status',true)->get()->random()->pluck('id'));
 
             $post->save();
         });
+
+
+        $tenRandomPosts = Post::where('status',true)->get()->random(10);
+
+
+
+
+        foreach ($tenRandomPosts as $post)
+        {
+            $post->is_upcoming = true;
+            $post->is_slider = true;
+            $post->is_suggestion = true;
+            $post->save();
+        }
+
+
     }
 }

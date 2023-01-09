@@ -7,8 +7,9 @@ export default defineConfig({
     plugins: [
         laravel([
             'resources/css/app.css',
+            'resources/css/filament.css',
             'resources/js/app.js',
-            'public/css/bootstrap.min.css','public/css/style.css'
+
         ]),
 
         livewire({  // <-- add livewire plugin

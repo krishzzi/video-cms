@@ -17,9 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
+            $table->text('desc')->nullable();
             $table->foreignId('parent_id')->nullable()->constrained('categories')->onUpdate('cascade')->onDelete('cascade');
             $table->integer('priority')->default(0);
             $table->boolean('status')->default(true);
+            $table->integer('views')->default(0);
             $table->timestamps();
         });
 

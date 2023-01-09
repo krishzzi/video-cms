@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->integer('views')->default(0);
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
 

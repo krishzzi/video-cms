@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\View\Components\Theme;
+use Filament\Facades\Filament;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Blade;
@@ -18,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+
+
+
     }
 
     /**
@@ -27,7 +31,22 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Blade::componentNamespace(Theme::class, 'theme');
-        Paginator::useBootstrapFive();
+
+        Blade::directive('plugin', function (string $component) {
+            return "@livewire('".$component."',[])";
+        });
+
+
+        Filament::serving(function () {
+            // Using Vite
+            Filament::registerViteTheme('resources/css/filament.css');
+        });
+
+        Filament::registerNavigationGroups([
+            'Access',
+            'Manage',
+            'System',
+        ]);
+
     }
 }

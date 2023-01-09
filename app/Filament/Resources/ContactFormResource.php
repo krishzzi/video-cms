@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class ContactFormResource extends Resource
 {
     protected static ?string $model = ContactForm::class;
-
+    protected static ?string $navigationGroup = 'Manage';
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     public static function form(Form $form): Form

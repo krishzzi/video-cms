@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Activity;
-use Illuminate\Http\Request;
+use App\Models\mix\sActivity;
 
 class DashboardController extends Controller
 {
@@ -12,7 +11,7 @@ class DashboardController extends Controller
     public function index()
     {
 
-        $activity = Activity::where('user_id',auth()->user()->id)->get();
+        $activity = sActivity::where('user_id',auth()->user()->id)->get();
         $activity->load('videos','posts');
 
         $inlist = $activity->where('inlist',true);
@@ -31,7 +30,7 @@ class DashboardController extends Controller
 
     public function myWatchlist()
     {
-        $activity = Activity::where('user_id',auth()->user()->id)->get();
+        $activity = sActivity::where('user_id',auth()->user()->id)->get();
         $activity->load('videos','posts');
 
         $inlist = $activity->where('inlist',true);

@@ -16,11 +16,12 @@ use Filament\Tables\Columns\TextColumn;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class PostResource extends Resource
 {
     protected static ?string $model = Post::class;
-    protected static ?string $navigationGroup = 'Manage';
+    protected static ?string $navigationGroup = 'Access';
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
     public static function form(Form $form): Form
@@ -72,15 +73,23 @@ class PostResource extends Resource
 
 
 
-                        Forms\Components\RichEditor::make('desc')
+//                        Forms\Components\RichEditor::make('desc')
+//                            ->label(__('Description'))
+//                            ->columnSpan(3)
+//                            ->required(),
+
+                        TinyEditor::make('desc')
+                            ->placeholder(__('Enter Video Description'))
                             ->label(__('Description'))
-                            ->columnSpan(3)
-                            ->required(),
+                            ->required()
+                            ->columnSpan(3),
+
+
                         Forms\Components\Fieldset::make('Manage')->columnSpan(3)->schema([
                             Forms\Components\Toggle::make('status')->inline()->default(true)->columnSpan(1),
                             Forms\Components\Toggle::make('is_upcoming')->label(__('Upcoming'))->inline()->default(true)->columnSpan(1),
-                            Forms\Components\Toggle::make('in_slider')->label(__('Slider'))->inline()->default(true)->columnSpan(1),
-                            Forms\Components\Toggle::make('in_suggestion')->label(__('Suggestion'))->inline()->default(true)->columnSpan(1),
+                            Forms\Components\Toggle::make('is_slider')->label(__('Slider'))->inline()->default(true)->columnSpan(1),
+                            Forms\Components\Toggle::make('is_suggestion')->label(__('Suggestion'))->inline()->default(true)->columnSpan(1),
                         ])->columns(4),
 
                     ])
@@ -103,8 +112,8 @@ class PostResource extends Resource
                 TextColumn::make('activity_count')->label(__('Views'))->counts('activity')->sortable()->toggleable()->toggledHiddenByDefault(),
                 TextColumn::make('comments_count')->label(__('Comments'))->counts('comments')->sortable()->toggleable()->toggledHiddenByDefault(),
 
-                Tables\Columns\ToggleColumn::make('in_slider')->label(__('As Slider'))->sortable()->toggleable()->toggledHiddenByDefault(),
-                Tables\Columns\ToggleColumn::make('in_suggestion')->label(__('As Suggestion'))->sortable()->toggleable()->toggledHiddenByDefault(),
+                Tables\Columns\ToggleColumn::make('is_slider')->label(__('As Slider'))->sortable()->toggleable()->toggledHiddenByDefault(),
+                Tables\Columns\ToggleColumn::make('is_suggestion')->label(__('As Suggestion'))->sortable()->toggleable()->toggledHiddenByDefault(),
                 Tables\Columns\ToggleColumn::make('is_upcoming')->label(__('As Upcoming'))->toggleable()->toggledHiddenByDefault(),
                 TextColumn::make('priority')->sortable()->toggleable(),
                 Tables\Columns\ToggleColumn::make('status')->toggleable(),

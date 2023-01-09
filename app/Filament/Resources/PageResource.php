@@ -14,10 +14,12 @@ use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class PageResource extends Resource
 {
     protected static ?string $model = Page::class;
+    protected static ?string $navigationGroup = 'Access';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -35,12 +37,39 @@ class PageResource extends Resource
                         ->afterStateHydrated(function (Closure $set, $state) {
                             $set('slug',Str::slug($state));
                         })
-                        ->columnSpan(2),
+                        ->columnSpanFull(),
 
-                    Forms\Components\TextInput::make('slug')->columnSpan(1),
-                    Forms\Components\TextInput::make('priority')->columnSpan(1),
-                    Forms\Components\RichEditor::make('desc')->columnSpan(2),
-                ])->columns(2),
+                    Forms\Components\TextInput::make('slug')->columnSpan(2),
+
+                    Forms\Components\Toggle::make('redirect')
+                        ->reactive()
+                        ->default(false),
+
+                    Forms\Components\TextInput::make('priority')
+                        ->visible(function (Closure $get){
+                            return !$get('redirect');
+                        })
+                        ->columnSpan(1),
+
+
+
+
+                    Forms\Components\TextInput::make('redirect_url')
+                        ->visible(function (Closure $get){
+                            return $get('redirect');
+                        })
+                        ->columnSpanFull()
+                        ->default(null),
+
+
+
+                    TinyEditor::make('desc')
+                        ->visible(function (Closure $get){
+                            return !$get('redirect');
+                        })
+                        ->columnSpanFull(),
+
+                ])->columns(3),
 
 
 

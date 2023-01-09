@@ -2,11 +2,12 @@
 
 namespace App\Filament\Widgets;
 
-use App\Models\Activity;
 use App\Models\Advert;
 use App\Models\Category;
 use App\Models\ContactForm;
+use App\Models\mix\sActivity;
 use App\Models\Post;
+use App\Models\System\Activity;
 use App\Models\Tag;
 use App\Models\User;
 use App\Models\Video;

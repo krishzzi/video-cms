@@ -3,9 +3,18 @@
 namespace App\Models;
 
 use App\Models\Mintreu\Image\Image;
+use App\Models\mix\sActivity;
+use App\Models\System\Activity;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property $is_upcoming
+ * @property $is_slider
+ * @property $is_suggestion
+ * @property $slug
+ * @property $title
+ */
 class Video extends Model
 {
     use HasFactory;
@@ -28,7 +37,9 @@ class Video extends Model
         'desc',
         'status',
         'views',
-        'is_upcoming','in_slider','in_suggestion'
+        'is_upcoming',
+        'is_slider',
+        'is_suggestion'
     ];
 
     protected $casts = [
@@ -55,7 +66,7 @@ class Video extends Model
     }
 
 
-    public function activity(): \Illuminate\Database\Eloquent\Relations\MorphToMany
+    public function activity()
     {
         return $this->morphToMany(Activity::class, 'activitiable');
     }

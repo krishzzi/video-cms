@@ -22,16 +22,14 @@ return new class extends Migration
             $table->boolean('view')->default(false);
             $table->string('ip');
             $table->foreignId('user_id')->nullable()->constrained('users')->onUpdate('cascade')->onDelete('set null');
+
             $table->timestamps();
         });
 
-
         Schema::create('activitiables',function (Blueprint $table){
             $table->foreignId('activity_id')->constrained('activities')->onUpdate('cascade')->onDelete('cascade');
-            $table->unsignedBigInteger('activitiable_id');
-            $table->string('activitiable_type');
+            $table->morphs('activitiable');
         });
-
 
     }
 
@@ -42,7 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activitiable');
         Schema::dropIfExists('activities');
     }
 };

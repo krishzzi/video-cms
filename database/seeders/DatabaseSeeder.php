@@ -22,12 +22,15 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-            CategorySeeder::class,
-            TagSeeder::class,
-            PostSeeder::class,
-            VideoSeeder::class,
-            SettingSeeder::class,
-            PageSeeder::class,
+            ApplicationSeeder::class
+//            CategorySeeder::class,
+//            TagSeeder::class,
+//            PostSeeder::class,
+//            VideoSeeder::class,
+//            SettingSeeder::class,
+//            PageSeeder::class,
+//            ThemeSeeder::class,
+//            ToolSeeder::class,
         ]);
 
     }

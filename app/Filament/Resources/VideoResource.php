@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class VideoResource extends Resource
 {
     protected static ?string $model = Video::class;
-    protected static ?string $navigationGroup = 'Manage';
+    protected static ?string $navigationGroup = 'Access';
 
     protected static ?string $navigationIcon = 'heroicon-o-collection';
 
@@ -42,8 +42,8 @@ class VideoResource extends Resource
                 TextColumn::make('activity_count')->label(__('Views'))->counts('activity')->sortable()->toggleable()->toggledHiddenByDefault(),
                 TextColumn::make('comments_count')->label(__('Comments'))->counts('comments')->sortable()->toggleable()->toggledHiddenByDefault(),
                 Tables\Columns\ToggleColumn::make('status'),
-                Tables\Columns\ToggleColumn::make('in_slider')->label(__('As Slider'))->toggleable()->toggledHiddenByDefault(),
-                Tables\Columns\ToggleColumn::make('in_suggestion')->label(__('As Suggestion'))->toggleable()->toggledHiddenByDefault(),
+                Tables\Columns\ToggleColumn::make('is_slider')->label(__('As Slider'))->toggleable()->toggledHiddenByDefault(),
+                Tables\Columns\ToggleColumn::make('is_suggestion')->label(__('As Suggestion'))->toggleable()->toggledHiddenByDefault(),
                 Tables\Columns\ToggleColumn::make('is_upcoming')->label(__('As Upcoming'))->toggleable()->toggledHiddenByDefault(),
                 TextColumn::make('priority')->sortable()->toggleable(),
                 TextColumn::make('updated_at')->since()->toggleable(),

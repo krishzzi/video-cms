@@ -9,16 +9,19 @@
         "ext-curl": "*",
         "filament/filament": "^2.15",
         "filament/notifications": "^2.16",
+        "filipfonal/filament-log-manager": "^1.0",
         "guzzlehttp/guzzle": "^7.2",
         "jorenvanhocht/laravel-share": "^4.2",
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^2.10",
-        "mintreu/layout": "dev-main"
+        "mintreu/laravel-layout": "dev-main",
+        "mohamedsabil83/filament-forms-tinyeditor": "^1.6"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.7",
+        "doctrine/dbal": "^3.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/breeze": "^1.13",
         "laravel/pint": "^1.0",

@@ -14,6 +14,7 @@ use Filament\Forms\Components\Toggle;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\EditRecord;
 use Illuminate\Support\Str;
+use Mohamedsabil83\FilamentFormsTinyeditor\Components\TinyEditor;
 
 class EditVideo extends EditRecord
 {
@@ -120,23 +121,27 @@ class EditVideo extends EditRecord
                         ])->columns(3),
 
 
-
-
-                    RichEditor::make('desc')
+                    TinyEditor::make('desc')
                         ->placeholder(__('Enter Video Description'))
                         ->label(__('Description'))
                         ->columnSpan(3),
+
+//                    RichEditor::make('desc')
+//                        ->placeholder(__('Enter Video Description'))
+//                        ->label(__('Description'))
+//                        ->columnSpan(3),
 
                     Fieldset::make('Thumbnail')
                         ->schema([
 
                             FileUpload::make('display')
                                 ->columnSpan(3)
+                                ->image()
                                 ->disk('public')
-                                ->imageResizeTargetHeight(900)
-                                ->imageResizeTargetWidth(1000)
                                 ->imageCropAspectRatio('16:9')
-                                ->image(),
+                                ->imageResizeTargetWidth('1920')
+                                ->imageResizeTargetHeight('1080')
+                                ,
 
                             TextInput::make('thumb_height')
                                 ->minValue(250)
@@ -160,8 +165,8 @@ class EditVideo extends EditRecord
                     Fieldset::make('Manage')->columnSpan(3)->schema([
                         Toggle::make('status')->inline()->default(true)->columnSpan(1),
                         Toggle::make('is_upcoming')->label(__('Upcoming'))->inline()->default(true)->columnSpan(1),
-                        Toggle::make('in_slider')->label(__('Slider'))->inline()->default(true)->columnSpan(1),
-                        Toggle::make('in_suggestion')->label(__('Suggestion'))->inline()->default(true)->columnSpan(1),
+                        Toggle::make('is_slider')->label(__('Slider'))->inline()->default(true)->columnSpan(1),
+                        Toggle::make('is_suggestion')->label(__('Suggestion'))->inline()->default(true)->columnSpan(1),
                     ])->columns(4),
 
                 ])

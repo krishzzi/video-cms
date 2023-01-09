@@ -9,6 +9,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use Illuminate\Http\Request;
 
 class ActivityRelationManager extends RelationManager
 {
@@ -20,7 +21,11 @@ class ActivityRelationManager extends RelationManager
     {
         return $form
             ->schema([
+
                 Forms\Components\TextInput::make('ip')
+                    ->default(function (Request $request){
+                        return $request->ip();
+                    })
                     ->required()
                     ->maxLength(255),
             ]);
@@ -32,17 +37,30 @@ class ActivityRelationManager extends RelationManager
             ->columns([
                 Tables\Columns\TextColumn::make('ip')->toggleable(),
                 Tables\Columns\TextColumn::make('user_id')->toggleable()->toggledHiddenByDefault(),
-                Tables\Columns\BooleanColumn::make('view')->sortable()->toggleable(),
-                Tables\Columns\BooleanColumn::make('like')->toggleable(),
-                Tables\Columns\BooleanColumn::make('share')->toggleable()->toggledHiddenByDefault(),
-                Tables\Columns\BooleanColumn::make('inlist')->toggleable()->toggledHiddenByDefault(),
+                Tables\Columns\IconColumn::make('view')
+                    ->boolean()
+                    ->trueIcon('heroicon-o-badge-check')
+                    ->falseIcon('heroicon-o-x-circle')->sortable()->toggleable(),
+                Tables\Columns\IconColumn::make('like')
+                    ->boolean()
+                    ->trueIcon('heroicon-o-badge-check')
+                    ->falseIcon('heroicon-o-x-circle')
+                    ->toggleable(),
+                Tables\Columns\IconColumn::make('share') ->boolean()
+                    ->trueIcon('heroicon-o-badge-check')
+                    ->falseIcon('heroicon-o-x-circle')
+                    ->toggleable()->toggledHiddenByDefault(),
+                Tables\Columns\IconColumn::make('inlist') ->boolean()
+                    ->trueIcon('heroicon-o-badge-check')
+                    ->falseIcon('heroicon-o-x-circle')
+                    ->toggleable()->toggledHiddenByDefault(),
 
             ])
             ->filters([
                 //
             ])
             ->headerActions([
-                //Tables\Actions\CreateAction::make(),
+                  Tables\Actions\CreateAction::make(),
             ])
             ->actions([
 //                Tables\Actions\ViewAction::make(),

@@ -21,6 +21,20 @@ class VideoSeeder extends Seeder
 
         $this->liveSeeding();
 
+        $tenRandomVideos = Video::where('status',true)->get()->random(10);
+
+
+
+
+        foreach ($tenRandomVideos as $video)
+        {
+            $video->is_upcoming = true;
+            $video->is_slider = true;
+            $video->is_suggestion = true;
+            $video->save();
+        }
+
+
 
 
     }
@@ -29,11 +43,12 @@ class VideoSeeder extends Seeder
     protected function liveSeeding()
     {
         $codeList = $this->getDemoVideoCodes();
+        $categories = Category::where('status',true)->get();
         foreach ($codeList as $code)
         {
             $grabber = new Grabber($code);
             $video = Video::create($grabber->get());
-//            $video->category()->attach(Category::where('status',true)->get()->random()->pluck('id'));
+            $video->category()->attach($categories->random()->first());
             $video->save();
 //            $video->category
         }
@@ -46,6 +61,15 @@ class VideoSeeder extends Seeder
     {
 
         return [
+            'UTAvGzCK6ok',
+            '1P3ZgLOy-w8',
+            'JhIw8ch4A9M',
+            'RFA3ruwfLYI',
+            'vdY5SFZBgnk',
+            'vkuiI430d_0',
+            'zR52MgYhm_Q',
+            'jRZIqXk6pIs',
+            'sAzlWScHTc4',
             'HvddDvCHLEI',
             'VICFSC7_kvw',
             'xfMN4SpIxIA',
@@ -60,6 +84,7 @@ class VideoSeeder extends Seeder
             'm1dmohRuDmo',
             'GkpJaj2J_Mc',
             '2fm8NdyLqeY',
+            '6rcFDWh1wZo',
         ];
     }
 

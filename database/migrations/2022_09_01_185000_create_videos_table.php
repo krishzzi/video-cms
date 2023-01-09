@@ -32,10 +32,10 @@ return new class extends Migration
             $table->text('desc')->nullable();
             $table->integer('priority')->default(0);
             $table->boolean('status')->default(true);
-            $table->integer('views')->nullable();
+            $table->integer('views')->default(0);
             $table->boolean('is_upcoming')->default(false);
-            $table->boolean('in_slider')->default(false);
-            $table->boolean('in_suggestion')->default(false);
+            $table->boolean('is_slider')->default(false);
+            $table->boolean('is_suggestion')->default(false);
             $table->timestamps();
         });
     }

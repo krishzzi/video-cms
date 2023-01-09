@@ -13,6 +13,7 @@ use App\Models\Tag;
 use App\Models\Video;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 class WebController extends Controller
 {
@@ -33,6 +34,8 @@ class WebController extends Controller
 
     public function index()
     {
+
+
 
         $setting = $this->setting;
         $content = Video::with('category','tags')->where('status',true);
